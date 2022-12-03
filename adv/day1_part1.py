@@ -1,4 +1,9 @@
-input = "/Users/annpeeters/advent/data/day1_input.txt"
+from pathlib import Path
+
+data_folder = Path(__file__).parent.parent / "data"
+print(Path(__file__).parent.parent) ## venv !!
+
+input = data_folder / "day1_input.txt"
 
 with open(input, 'r') as file:
     most_calories = 0
