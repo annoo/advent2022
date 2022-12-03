@@ -1,6 +1,7 @@
 import pytest
-input = ("random")
-#somthing wrong with the cache and the poetry venv?
+input = ("/Users/annpeeters/advent/data/day3_input.txt")
+# somthing wrong with the cache and the poetry venv?
+
 
 @pytest.mark.parametrize("given, expected", [
              (('vJrwpWtwJgWrhcsFMMfFFhFp',
@@ -17,7 +18,7 @@ input = ("random")
             )
 def test_detect_similar_items(given, expected):
     content = given
-    same_item = look_for_same_item_in_rucksack(content)
+    same_item = look_for_same_item_in_rucksacks(content)
     assert same_item == expected
 
 
@@ -49,9 +50,10 @@ def look_for_same_item(content: str) -> str:
     return same
 
 
-def look_for_same_item_in_rucksack(content: list[str]) -> str:
-    same = ''.join(all(set(x for x in content)))
-    return same
+def look_for_same_item_in_rucksacks(rucksack_of_team: list[str]) -> str:
+    return ''.join(set(rucksack_of_team[0])
+                   .intersection(*set(rucksack_of_team)))
+    # is ther another fuctional way to do this properly?
 
 
 def lookup_priority_number(letter: str) -> int:
@@ -65,13 +67,13 @@ with open(input, 'r') as file:
     numbers = []
     three_rucksacks = []
     for i, line in enumerate(file):
-        if i+1 % 3 != 0:
+        if (i+1) % 3 != 0:
             three_rucksacks.append(line.strip())
         else:
+            three_rucksacks.append(line.strip())
             number = lookup_priority_number(
-                look_for_same_item_in_rucksack(three_rucksacks))
+                look_for_same_item_in_rucksacks(three_rucksacks))
             numbers.append(number)
             three_rucksacks = []
-            three_rucksacks.append(line.strip())
             break
     print(sum(numbers))
