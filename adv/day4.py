@@ -9,13 +9,15 @@ def pick_start_and_stop(two_numbers: str):
     return int(start), (int(stop) + 1)
 
 
-def is_range_completely_in_the_other(A, B) -> bool:
+def is_range_completely_in_the_other(
+    A: tuple[int, int], B: tuple[int, int]
+) -> bool:
     return (set(range(*A)) == set(range(*A)).intersection(range(*B))) or (
         set(range(*B)) == set(range(*A)).intersection(range(*B))
     )
 
 
-def are_overlapping(A, B) -> bool:
+def are_overlapping(A: tuple[int, int], B: tuple[int, int]) -> bool:
     return not not set(range(*A)).intersection(range(*B))
 
 
