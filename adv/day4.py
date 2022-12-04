@@ -6,25 +6,14 @@ input = data_folder / "day4_input.txt"
 
 def pick_start_and_stop(two_numbers: str):
     start, stop = two_numbers.split("-")
-    return int(start), (int(stop) + 1)
-
-
-def is_range_completely_in_the_other(
-    A: tuple[int, int], B: tuple[int, int]
-) -> bool:
-    intersection = set(range(*A)).intersection(range(*B))
-    return (set(range(*A)) == intersection) or (set(range(*B)) == intersection)
-
-
-def are_overlapping(A: tuple[int, int], B: tuple[int, int]) -> bool:
-    return not not set(range(*A)).intersection(range(*B))
+    return int(start), (int(stop) + 1)  # range function doesn't include stop
 
 
 def determine_kind_of_overlap(A: tuple[int, int], B: tuple[int, int]) -> str:
     intersection = set(range(*A)).intersection(range(*B))
     if (set(range(*A)) == intersection) or (set(range(*B)) == intersection):
         return "A or B completely in intersection"
-    elif not not set(range(*A)).intersection(range(*B)):
+    elif not not intersection:  # not an empty set # not set().isempty
         return "some overlap"
     else:
         return "no overlap"
