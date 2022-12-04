@@ -12,9 +12,8 @@ def pick_start_and_stop(two_numbers: str):
 def is_range_completely_in_the_other(
     A: tuple[int, int], B: tuple[int, int]
 ) -> bool:
-    return (set(range(*A)) == set(range(*A)).intersection(range(*B))) or (
-        set(range(*B)) == set(range(*A)).intersection(range(*B))
-    )
+    intersection = set(range(*A)).intersection(range(*B))
+    return (set(range(*A)) == intersection) or (set(range(*B)) == intersection)
 
 
 def are_overlapping(A: tuple[int, int], B: tuple[int, int]) -> bool:
