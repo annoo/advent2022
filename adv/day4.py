@@ -20,18 +20,18 @@ def determine_kind_of_overlap(A: tuple[int, int], B: tuple[int, int]) -> str:
 
 
 with open(input, "r") as file:
-    overlaps_completely = []
-    overlaps = []
+    overlaps_completely = 0
+    overlaps = 0
     for i, line in enumerate(file):
         section_A, section_B = line.strip().split(",")
         rangeA = pick_start_and_stop(section_A)
         rangeB = pick_start_and_stop(section_B)
         overlap = determine_kind_of_overlap(rangeA, rangeB)
         if overlap == "A or B completely in intersection":
-            overlaps_completely.append(i)
+            overlaps_completely += 1
         elif overlap == "some overlap":
-            overlaps.append(i)
+            overlaps += 1
         else:
             continue
-    print(len(overlaps_completely))
-    print(len(overlaps + overlaps_completely))
+    print(overlaps_completely)
+    print(overlaps + overlaps_completely)
