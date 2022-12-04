@@ -12,7 +12,7 @@ def calculate_score_of_a_round(play: tuple) -> int:
     wintable = [1, 2, 3]
     i = their_score - 1
 
-    if your_shape == 'X':       # loose
+    if your_shape == 'X':       # lose
         points = 0
         yi = ((i - 1) % len(wintable))
     elif your_shape == 'Y':     # draw

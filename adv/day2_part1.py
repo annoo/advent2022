@@ -10,8 +10,7 @@ def determine_score_for_a_shape(letter: str) -> int:
         return 3
 
 
-def calculate_score_of_a_round(play: tuple) -> int:
-    play1, play2 = play
+def calculate_score_of_a_round(play1, play2) -> int:
     your_score = determine_score_for_a_shape(play2)
     their_score = determine_score_for_a_shape(play1)
     wintable = [1, 2, 3]
@@ -35,5 +34,5 @@ with open(input, 'r') as file:
     sum = 0
     for line in file:
         play = tuple(line.strip().split(' '))
-        sum += calculate_score_of_a_round(play)
+        sum += calculate_score_of_a_round(*play)
     print(sum)

@@ -5,9 +5,6 @@ input = "/Users/annpeeters/advent/data/day3_input.txt"
 
 
 # TESTS
-# Would you keep the parametriziations as such,
-# or would you put them into 1 fixture?
-# I'm learning fixtures/parametrizations, so advise = welcome :)
 @pytest.mark.parametrize("given, expected",
                          [
                             ('vJrwpWtwJgWrhcsFMMfFFhFp',
@@ -55,7 +52,7 @@ def test_lookup_priority_number(given, expected):
 
 # CODE
 def split_in_half(content: str) -> tuple[str, str]:
-    i = int(len(content)/2)
+    i = len(content) // 2
     comp1 = content[:i]
     comp2 = content[i:]
     return comp1, comp2
@@ -80,6 +77,3 @@ with open(input, 'r') as file:
         number = lookup_priority_number(look_for_same_item(line))
         numbers.append(number)
     print(sum(numbers))
-# Could I do this with a generator, forgoing the collectionm of numbers ?
-# Can I seperate the reading of the list and the summing of numbers in a way
-# I feel like I skipped a making test because of this ?
