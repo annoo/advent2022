@@ -64,6 +64,3 @@ for stack in stacks:
     top_box = stack.pop(0)
     top_boxes.append(top_box)
 print("".join(top_boxes))
-
-# NOT FRFFFFFFR
-# not RRRRRRRRR
