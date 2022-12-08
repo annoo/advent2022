@@ -53,14 +53,17 @@ with open(input, "r") as file:
             how_many_boxes = int(how_many_as_text.strip("move "))
             from_stack, to_stack = what_stacks_as_text.split(" to")
             from_stack, to_stack = int(from_stack) - 1, int(to_stack) - 1
-            for box in range(how_many_boxes):
-                box_on_crane = stacks[from_stack].pop(0)
-                stacks[to_stack].insert(0, box_on_crane)
+            boxes_on_crane = stacks[from_stack][:how_many_boxes]
+            del stacks[from_stack][:how_many_boxes]
+            for box in reversed(boxes_on_crane):
+                stacks[to_stack].insert(0, box)
 
+print(stacks)
 top_boxes = []
 for stack in stacks:
     top_box = stack.pop(0)
     top_boxes.append(top_box)
 print("".join(top_boxes))
 
-# is TPGVQPFDH
+# NOT FRFFFFFFR
+# not RRRRRRRRR
